@@ -12,13 +12,14 @@ const Movie = ( props, { addToSavedList } ) => {
        axios
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
+          console.log(response.data);
           setMovie(response.data);
         })
         .catch(error => {
           console.error(error);
         });
 
-  },[]);
+  },[props.match.params.movieId]);
 
   // Uncomment this only when you have moved on to the stretch goals
   const saveMovie = () => {
